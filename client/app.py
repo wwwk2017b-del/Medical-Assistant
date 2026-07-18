@@ -4,7 +4,7 @@ from components.upload import render_uploader
 from components.history_download import render_history_download
 from components.chatUI import render_chat
 
-st.set_page_config(page_title="NeuroDoc: Thunder Form", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="NeuroDoc: Thunder Form", layout="wide")
 
 # Zenitsu Thunder Breathing CSS Injection
 st.markdown("""
@@ -132,25 +132,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("⚡ NeuroDoc: Thunder Form")
-
-# Inject Zenitsu Image in sidebar securely
-if os.path.exists("zenitsu.jpg"):
-    st.sidebar.image("zenitsu.jpg", use_column_width=True)
-elif os.path.exists("client/zenitsu.jpg"):
-    st.sidebar.image("client/zenitsu.jpg", use_column_width=True)
-else:
-    # Fallback to a native glowing lightning bolt if the image isn't found
-    st.sidebar.markdown(
-        """
-        <div style="text-align: center; margin-bottom: 20px;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFD700" style="width: 120px; filter: drop-shadow(0 0 25px rgba(255,215,0,0.8));">
-                <path d="M13 2L3 14h7v8l11-12h-7L13 2z"/>
-            </svg>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+st.title("NeuroDoc: Thunder Form")
 
 render_uploader()
 render_chat()

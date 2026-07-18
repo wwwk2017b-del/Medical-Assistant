@@ -36,7 +36,6 @@ st.markdown("""
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
 
     /* Chat Input Container - Electric Focus */
     .stChatInputContainer {
@@ -126,15 +125,16 @@ st.markdown("""
     .creator-badge {
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        left: 20px;
         background: rgba(10, 10, 10, 0.8);
         border: 1px solid #FFD700;
-        padding: 10px 20px;
-        border-radius: 8px;
+        padding: 5px 10px;
+        border-radius: 6px;
         font-family: 'Orbitron', sans-serif;
-        font-weight: 900;
+        font-size: 0.75rem;
+        font-weight: 700;
         color: #FFD700;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
         z-index: 9999;
         backdrop-filter: blur(5px);
         text-transform: uppercase;
@@ -157,11 +157,14 @@ st.markdown("""
 
 st.title("⚡ NeuroDoc: Thunder Form")
 
-# Inject Zenitsu GIF in sidebar
-st.sidebar.markdown(
-    '<img class="zenitsu-hero" src="https://media1.tenor.com/m/WqHlI1CgGZMAAAAd/zenitsu-zenitsu-agatsuma.gif" alt="Zenitsu">',
-    unsafe_allow_html=True
-)
+# Inject Zenitsu Image in sidebar (Requires zenitsu.jpg to be in the client folder)
+try:
+    st.sidebar.image("zenitsu.jpg", use_column_width=True)
+except FileNotFoundError:
+    st.sidebar.markdown(
+        '<img class="zenitsu-hero" src="https://i.pinimg.com/originals/11/9a/5e/119a5e8e6ab274b71ab477de147ef3ef.jpg" alt="Zenitsu" style="width:100%; border-radius:12px; box-shadow: 0 0 30px rgba(255,215,0,0.4); border: 2px solid #FFD700; margin-bottom: 20px;">',
+        unsafe_allow_html=True
+    )
 
 render_uploader()
 render_chat()

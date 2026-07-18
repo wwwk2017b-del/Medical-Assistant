@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from components.upload import render_uploader
 from components.history_download import render_history_download
@@ -121,9 +122,8 @@ st.markdown("""
         box-shadow: 8px 8px 30px rgba(255, 215, 0, 0.2), inset 1px 1px 0 rgba(255, 255, 255, 0.2);
     }
     
-    /* Zenitsu GIF placement */
-    .zenitsu-hero {
-        width: 100%;
+    /* Zenitsu Image Styling */
+    [data-testid="stImage"] img {
         border-radius: 12px;
         box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
         border: 2px solid #FFD700;
@@ -134,11 +134,13 @@ st.markdown("""
 
 st.title("⚡ NeuroDoc: Thunder Form")
 
-# Inject Zenitsu Image in sidebar
-st.sidebar.markdown(
-    '<img class="zenitsu-hero" src="https://media1.tenor.com/m/WqHlI1CgGZMAAAAd/zenitsu-zenitsu-agatsuma.gif" alt="Zenitsu">',
-    unsafe_allow_html=True
-)
+# Inject Zenitsu Image in sidebar securely
+if os.path.exists("zenitsu.jpg"):
+    st.sidebar.image("zenitsu.jpg", use_column_width=True)
+elif os.path.exists("client/zenitsu.jpg"):
+    st.sidebar.image("client/zenitsu.jpg", use_column_width=True)
+else:
+    st.sidebar.warning("⚡ Zenitsu image not found. Please add 'zenitsu.jpg' to the client folder and push to GitHub.")
 
 render_uploader()
 render_chat()

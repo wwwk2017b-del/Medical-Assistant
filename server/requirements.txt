@@ -9,6 +9,7 @@ langchain-community>=0.3,<1.0
 langchain-core>=0.3,<1.0
 langchain-groq>=0.3,<1.0
 langchain-huggingface>=0.2
+sentence-transformers
 
 # Vectorstore
 pinecone

@@ -9,7 +9,7 @@ from pinecone import Pinecone, ServerlessSpec
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
 load_dotenv()
 
@@ -48,8 +48,8 @@ index = pc.Index(PINECONE_INDEX_NAME)
 
 
 def load_vectorstore(uploaded_files):
-    embed_model = GoogleGenerativeAIEmbeddings(
-        model="models/text-embedding-004"
+    embed_model = HuggingFaceEmbeddings(
+        model_name="BAAI/bge-base-en-v1.5"
     )
 
     file_paths = []

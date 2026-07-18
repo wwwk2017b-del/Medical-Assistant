@@ -8,10 +8,10 @@ langchain>=0.3,<1.0
 langchain-community>=0.3,<1.0
 langchain-core>=0.3,<1.0
 langchain-groq>=0.3,<1.0
-langchain-google-genai>=2.0
-
-# Vectorstore
+# Vectorstore & Embeddings
 pinecone
+pinecone-plugin-inference
+langchain-pinecone
 
 # PDF Parsing
 PyPDF  # backend for PyPDFLoader via langchain_community

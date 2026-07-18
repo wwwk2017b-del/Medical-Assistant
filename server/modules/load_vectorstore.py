@@ -9,7 +9,7 @@ from pinecone import Pinecone, ServerlessSpec
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_pinecone import PineconeEmbeddings
 
 load_dotenv()
 
@@ -17,7 +17,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 
 PINECONE_ENV = "us-east-1"
-PINECONE_INDEX_NAME = "medicalindex3"
+PINECONE_INDEX_NAME = "medicalindex4"
 
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
@@ -36,7 +36,7 @@ existing_indexes = [i["name"] for i in pc.list_indexes()]
 if PINECONE_INDEX_NAME not in existing_indexes:
     pc.create_index(
         name=PINECONE_INDEX_NAME,
-        dimension=768,
+        dimension=1024,
         metric="dotproduct",
         spec=spec
     )
@@ -48,8 +48,9 @@ index = pc.Index(PINECONE_INDEX_NAME)
 
 
 def load_vectorstore(uploaded_files):
-    embed_model = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001"
+    embed_model = PineconeEmbeddings(
+        model="multilingual-e5-large",
+        pinecone_api_key=PINECONE_API_KEY
     )
 
     file_paths = []

@@ -4,7 +4,7 @@ from modules.llm import get_llm_chain
 from modules.query_handlers import query_chain
 from langchain_core.documents import Document
 from langchain_core.retrievers import BaseRetriever
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_pinecone import PineconeEmbeddings
 from pinecone import Pinecone
 from pydantic import Field
 from typing import List, Optional
@@ -15,7 +15,7 @@ import os
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-PINECONE_INDEX_NAME = "medicalindex3"
+PINECONE_INDEX_NAME = "medicalindex4"
 
 router=APIRouter()
 
@@ -27,8 +27,9 @@ async def ask_question(question: str = Form(...)):
         # Embed model + Pinecone setup
         pc = Pinecone(api_key=PINECONE_API_KEY)
         index = pc.Index(PINECONE_INDEX_NAME)
-        embed_model = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001"
+        embed_model = PineconeEmbeddings(
+            model="multilingual-e5-large",
+            pinecone_api_key=PINECONE_API_KEY
         )
         embedded_query = embed_model.embed_query(question)
         res = index.query(vector=embedded_query, top_k=3, include_metadata=True)

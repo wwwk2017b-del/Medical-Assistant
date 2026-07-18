@@ -49,7 +49,7 @@ index = pc.Index(PINECONE_INDEX_NAME)
 
 def load_vectorstore(uploaded_files):
     embed_model = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001"
+        model="models/text-embedding-004"
     )
 
     file_paths = []
@@ -77,14 +77,22 @@ def load_vectorstore(uploaded_files):
         metadatas = [{**chunk.metadata, "text": chunk.page_content} for chunk in chunks]
         ids = [f"{Path(file_path).stem}-{i}" for i in range(len(chunks))]
 
-        print(f"Embedding {len(texts)} chunks...")
-
-        embeddings = embed_model.embed_documents(texts)
-
-        print("Uploading to Pinecone...")
-
-        index.upsert(
-            vectors=list(zip(ids, embeddings, metadatas))
-        )
+        print(f"Total chunks to process: {len(texts)}")
+        batch_size = 100
+        
+        for i in range(0, len(texts), batch_size):
+            batch_texts = texts[i:i+batch_size]
+            batch_ids = ids[i:i+batch_size]
+            batch_metadatas = metadatas[i:i+batch_size]
+            
+            print(f"Embedding and uploading batch {i//batch_size + 1}...")
+            
+            # Embed in batches to avoid Google API limits
+            batch_embeddings = embed_model.embed_documents(batch_texts)
+            
+            # Upsert in batches to avoid Pinecone payload limits
+            index.upsert(
+                vectors=list(zip(batch_ids, batch_embeddings, batch_metadatas))
+            )
 
         print(f"Upload complete for {file_path}")

@@ -15,7 +15,14 @@ NeuroDoc is a high-performance, Full-Stack AI application that allows users to u
 ## 📸 Screenshots
 
 ### Streamlit UI (Thunder Form)
-*(Drag and drop your Streamlit screenshot here on GitHub!)*
+<img width="1910" height="881" alt="image" src="https://github.com/user-attachments/assets/680ea299-65be-4fc6-9de1-3a0e0d6e0ce0" />
+<img width="1867" height="882" alt="image" src="https://github.com/user-attachments/assets/765e62ef-9ac3-41ff-883b-a34cd4859ed1" />
+<img width="1892" height="1007" alt="image" src="https://github.com/user-attachments/assets/02a8f45e-d59f-4709-a9ec-147f42dbba69" />
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/48f3ce47-b5fb-4de0-bba4-b3b03801155e" />
+
+
+
+
 
 ### API Response in Postman
 *(Drag and drop your Postman screenshot here on GitHub!)*

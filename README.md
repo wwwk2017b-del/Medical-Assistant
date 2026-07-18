@@ -8,8 +8,17 @@
 ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge)
 ![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97_Hugging_Face-FFD21E?style=for-the-badge&logoColor=black)
 ![Pinecone](https://img.shields.io/badge/Pinecone-000000?style=for-the-badge)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
 NeuroDoc is a high-performance, Full-Stack AI application that allows users to upload any PDF document and instantly extract knowledge from it using a conversational AI interface. Built with a highly advanced 3D Cyberpunk aesthetic, it leverages a robust **RAG (Retrieval-Augmented Generation)** architecture to deliver lightning-fast, accurate responses.
+
+## 📸 Screenshots
+
+### Streamlit UI (Thunder Form)
+*(Drag and drop your Streamlit screenshot here on GitHub!)*
+
+### API Response in Postman
+*(Drag and drop your Postman screenshot here on GitHub!)*
 
 ## 🚀 Tech Stack & Architecture
 

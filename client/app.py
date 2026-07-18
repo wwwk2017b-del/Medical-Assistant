@@ -140,7 +140,17 @@ if os.path.exists("zenitsu.jpg"):
 elif os.path.exists("client/zenitsu.jpg"):
     st.sidebar.image("client/zenitsu.jpg", use_column_width=True)
 else:
-    st.sidebar.warning("⚡ Zenitsu image not found. Please add 'zenitsu.jpg' to the client folder and push to GitHub.")
+    # Fallback to a native glowing lightning bolt if the image isn't found
+    st.sidebar.markdown(
+        """
+        <div style="text-align: center; margin-bottom: 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFD700" style="width: 120px; filter: drop-shadow(0 0 25px rgba(255,215,0,0.8));">
+                <path d="M13 2L3 14h7v8l11-12h-7L13 2z"/>
+            </svg>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 render_uploader()
 render_chat()

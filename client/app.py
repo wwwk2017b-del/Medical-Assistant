@@ -36,7 +36,6 @@ st.markdown("""
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
 
     /* Chat Input Container - Glowing Focus */
     .stChatInputContainer {

@@ -136,7 +136,7 @@ st.title("⚡ NeuroDoc: Thunder Form")
 
 # Inject Zenitsu Image in sidebar
 st.sidebar.markdown(
-    '<img class="zenitsu-hero" src="https://i.pinimg.com/originals/11/9a/5e/119a5e8e6ab274b71ab477de147ef3ef.jpg" alt="Zenitsu">',
+    '<img class="zenitsu-hero" src="https://media1.tenor.com/m/WqHlI1CgGZMAAAAd/zenitsu-zenitsu-agatsuma.gif" alt="Zenitsu">',
     unsafe_allow_html=True
 )
 

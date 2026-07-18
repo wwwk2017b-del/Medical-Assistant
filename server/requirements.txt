@@ -1,0 +1,28 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+python-multipart  # for file uploads
+
+# LangChain & Ecosystem (all from compatible 0.3.x era)
+langchain>=0.3,<1.0
+langchain-community>=0.3,<1.0
+langchain-core>=0.3,<1.0
+langchain-groq>=0.3,<1.0
+langchain-huggingface>=0.2
+
+# Vectorstore
+pinecone
+
+# PDF Parsing
+PyPDF  # backend for PyPDFLoader via langchain_community
+
+# Environment Variables
+python-dotenv
+
+# Typing & Utilities
+pydantic
+requests
+tqdm
+
+# Logging (optional but recommended)
+loguru

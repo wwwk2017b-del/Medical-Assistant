@@ -15,7 +15,7 @@ import os
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-PINECONE_INDEX_NAME = "medicalindex"
+PINECONE_INDEX_NAME = "medicalindex2"
 
 router=APIRouter()
 
@@ -28,7 +28,7 @@ async def ask_question(question: str = Form(...)):
         pc = Pinecone(api_key=PINECONE_API_KEY)
         index = pc.Index(PINECONE_INDEX_NAME)
         embed_model = HuggingFaceEmbeddings(
-            model_name="BAAI/bge-base-en-v1.5"
+            model_name="BAAI/bge-small-en-v1.5"
         )
         embedded_query = embed_model.embed_query(question)
         res = index.query(vector=embedded_query, top_k=3, include_metadata=True)

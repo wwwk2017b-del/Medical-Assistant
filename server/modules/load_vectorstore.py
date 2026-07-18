@@ -17,7 +17,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 
 PINECONE_ENV = "us-east-1"
-PINECONE_INDEX_NAME = "medicalindex"
+PINECONE_INDEX_NAME = "medicalindex2"
 
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
@@ -36,7 +36,7 @@ existing_indexes = [i["name"] for i in pc.list_indexes()]
 if PINECONE_INDEX_NAME not in existing_indexes:
     pc.create_index(
         name=PINECONE_INDEX_NAME,
-        dimension=768,
+        dimension=384,
         metric="dotproduct",
         spec=spec
     )
@@ -49,7 +49,7 @@ index = pc.Index(PINECONE_INDEX_NAME)
 
 def load_vectorstore(uploaded_files):
     embed_model = HuggingFaceEmbeddings(
-        model_name="BAAI/bge-base-en-v1.5"
+        model_name="BAAI/bge-small-en-v1.5"
     )
 
     file_paths = []
